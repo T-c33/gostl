@@ -103,3 +103,31 @@ func (l *List) GetValue(position int) (value interface{}) {
 		return node.GetNodeValue()
 	}
 }
+
+func (l *List) Remove(position int, node *Node) (err error) {
+	if position >= (*l).length {
+		return errors.New("wrong position")
+	}
+
+	if position == 0 {
+		node = (*l).head
+		(*l).head = (*node).next
+		if (*l).length == 1 {
+			(*l).tail = nil
+		}
+	} else {
+		preItem := (*l).head
+		for i := 1; i < position; i++ {
+			preItem = (*preItem).next
+		}
+
+		node = (*preItem).next
+		(*preItem).next = (*node).next
+
+		if position == ((*l).length - 1) {
+			(*l).tail = preItem
+		}
+	}
+	(*l).length--
+	return nil
+}
