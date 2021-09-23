@@ -1,5 +1,7 @@
 package list
 
+import "github.com/pkg/errors"
+
 type Node struct {
 	value interface{}
 	next *Node
@@ -59,5 +61,26 @@ func (l *List) Append(value interface{}) {
 	(*l).length++
 }
 
-
+func (l *List) Insert(value interface{}, position int) (err error){
+	if position > (*l).length || (*l).length == 0 {
+		return errors.New("position err or list length error")
+	}
+	node := NewNode(value)
+	if position == 0 {
+		(*node).next = (*l).head
+		(*l).head = node
+	} else {
+		preItem := (*l).head
+		for i := 1; i < position; i++ {
+			preItem = (*preItem).next
+		}
+		(*node).next = (*preItem).next
+		(*preItem).next = node
+	}
+	(*l).length++
+	if position == (*l).length {
+		(*l).tail = node
+	}
+	return nil
+}
 

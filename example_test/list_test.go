@@ -10,7 +10,6 @@ func TestList(t *testing.T) {
 	l := list.NewList()
 	l.Append(3)
 	l.Append(4)
-	fmt.Printf("%+v",l)
-	fmt.Printf("%+v",l.GetListHead())
-	fmt.Printf("%+v",l.GetListTail())
+	_ = l.Insert("sa", 2)
+	fmt.Printf("%+v",*(l.GetListHead().GetNodeNext().GetNodeNext()))
 }
