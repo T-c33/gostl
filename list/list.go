@@ -84,3 +84,22 @@ func (l *List) Insert(value interface{}, position int) (err error){
 	return nil
 }
 
+func (l *List) GetNode(position int) (node *Node) {
+	if position >= l.length {
+		return nil
+	}
+	node = (*l).head
+	for i := 0; i < position; i++ {
+		node = (*node).next
+	}
+	return node
+}
+
+func (l *List) GetValue(position int) (value interface{}) {
+	node := l.GetNode(position)
+	if node == nil {
+		return nil
+	} else {
+		return node.GetNodeValue()
+	}
+}

@@ -11,5 +11,5 @@ func TestList(t *testing.T) {
 	l.Append(3)
 	l.Append(4)
 	_ = l.Insert("sa", 2)
-	fmt.Printf("%+v",*(l.GetListHead().GetNodeNext().GetNodeNext()))
+	fmt.Printf("%+v",l.GetValue(2))
 }
