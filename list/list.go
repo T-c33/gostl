@@ -5,10 +5,26 @@ type Node struct {
 	next *Node
 }
 
+func (node *Node) GetNodeValue() interface{} {
+	return node.value
+}
+
+func (node *Node) GetNodeNext() *Node {
+	return node.next
+}
+
 type List struct {
 	head *Node
 	tail *Node
 	length int
+}
+
+func (l *List) GetListHead() *Node {
+	return l.head
+}
+
+func (l *List) GetListTail() *Node {
+	return l.tail
 }
 
 func NewNode(value interface{}) *Node {
