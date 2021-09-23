@@ -7,18 +7,18 @@ type Node struct {
 	next *Node
 }
 
+type List struct {
+	head *Node
+	tail *Node
+	length int
+}
+
 func (node *Node) GetNodeValue() interface{} {
 	return node.value
 }
 
 func (node *Node) GetNodeNext() *Node {
 	return node.next
-}
-
-type List struct {
-	head *Node
-	tail *Node
-	length int
 }
 
 func (l *List) GetListHead() *Node {
